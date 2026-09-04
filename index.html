@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MWYD | تطبيق تنزيل الوسائط الخارق للأندرويد</title>
+  <meta name="description" content="تطبيق MWYD لتحميل الفيديو والصوت بأعلى جودة 4K/1080p من يوتيوب وتيك توك وفيسبوك وإكس، مع دعم الاستئناف الذكي، بدون إعلانات ومجاني 100%.">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#F59E0B',
+              'gold-hover': '#D97706',
+              dark: '#0B0F19',
+              card: '#111827',
+              border: '#1F2937',
+              accent: '#10B981',
+              cyan: '#06B6D4'
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            jakarta: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #07090e;
+      color: #f3f4f6;
+      overflow-x: hidden;
+    }
+    .font-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .glow-gold {
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0) 70%);
+    }
+    .glow-cyan {
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(6, 182, 212, 0) 70%);
+    }
+    .glass-card {
+      background: rgba(17, 24, 39, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+    .btn-gold-glow {
+      box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.5);
+    }
+    .btn-gold-glow:hover {
+      box-shadow: 0 0 35px 0px rgba(245, 158, 11, 0.7);
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-500 selection:text-black">
+
+  <!-- Glow Backgrounds -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] glow-gold pointer-events-none -z-10"></div>
+  <div class="fixed top-1/3 -right-40 w-[600px] h-[600px] glow-cyan pointer-events-none -z-10"></div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#07090e]/80 border-b border-white/5 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/icon.png" alt="MWYD Logo" class="w-11 h-11 rounded-2xl shadow-lg shadow-amber-500/20 border border-amber-500/30 object-cover">
+        <div>
+          <span class="text-2xl font-black tracking-wider text-white font-num">MWYD</span>
+          <span class="text-xs text-amber-400 block -mt-1 font-medium">مَوِيدي ميديا</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-300">
+        <a href="#features" class="hover:text-amber-400 transition-colors">الميزات</a>
+        <a href="#screenshots" class="hover:text-amber-400 transition-colors">واجهة التطبيق</a>
+        <a href="#how-it-works" class="hover:text-amber-400 transition-colors">طريقة الاستخدام</a>
+        <a href="#faq" class="hover:text-amber-400 transition-colors">الأسئلة الشائعة</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/monestw-cell/mwyd-media-downloader" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 transition-all">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="#download" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-amber-500 to-amber-600 text-black hover:from-amber-400 hover:to-amber-500 transition-all btn-gold-glow">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          تحميل APK
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-16 pb-24 md:pt-24 md:pb-36 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 text-center lg:text-right space-y-8">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs sm:text-sm font-bold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            الإصدار الأحدث v1.8.9.3 مستقر وجاهز للتحميل
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl lg:text-6xl font-black text-white leading-tight tracking-tight">
+            حمّل أي فيديو أو صوت <br class="hidden sm:block">
+            <span class="bg-gradient-to-l from-amber-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent">
+              بأعلى جودة وبضغطة زر واحدة!
+            </span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-gray-300 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            تطبيق <strong class="text-white font-bold">MWYD</strong> يمنحك القوة الكاملة لمحرك <span class="font-num text-amber-400">yt-dlp</span> على هاتفك الأندرويد. تنزيل بدقة 4K و 1080p، استئناف ذكي، بدون إعلانات، ومجاني ومفتوح المصدر بالكامل.
+          </p>
+
+          <!-- Download Action Area -->
+          <div id="download" class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="https://github.com/monestw-cell/mwyd-media-downloader/releases/download/v1.0.0/mwyd-media-downloader-v1.0.0.apk" 
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-black font-extrabold text-base hover:opacity-95 transition-all btn-gold-glow group">
+              <svg class="w-6 h-6 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+              </svg>
+              <span>تحميل مباشر (Release APK)</span>
+              <span class="px-2 py-0.5 rounded-md bg-black/15 text-xs font-num font-bold">44.8 MB</span>
+            </a>
+
+            <a href="https://github.com/monestw-cell/mwyd-media-downloader/releases/latest" target="_blank"
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all">
+              <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>صفحة الإصدارات على GitHub</span>
+            </a>
+          </div>
+
+          <!-- Specs Badges -->
+          <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-gray-400 font-medium">
+            <div class="flex items-center gap-1.5">
+              <span class="text-emerald-400">✔</span> أندرويد 7.0 فأعلى (API 24+)
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-emerald-400">✔</span> خالٍ من الإعلانات تماماً
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-emerald-400">✔</span> معمارية 64-bit / 32-bit
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-emerald-400">✔</span> رخصة مفتوحة المصدر GPL-3.0
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone Mockup -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <div class="relative w-[280px] sm:w-[320px] rounded-[42px] p-3 bg-gradient-to-b from-gray-700 via-gray-900 to-black shadow-2xl shadow-amber-500/10 border-2 border-white/20">
+            <div class="overflow-hidden rounded-[34px] bg-black aspect-[9/19] relative border border-white/10">
+              <img src="assets/screen1.png" alt="MWYD App Screenshot" class="w-full h-full object-cover">
+              
+              <!-- Subtle overlay gradient -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+            </div>
+
+            <!-- Floating Quick Badge -->
+            <div class="absolute -bottom-6 -right-6 glass-card p-4 rounded-2xl shadow-xl border border-amber-500/30 flex items-center gap-3 animate-bounce">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg">⚡</div>
+              <div>
+                <p class="text-xs text-gray-400">سرعة تنزيل فائقة</p>
+                <p class="text-sm font-bold text-white font-num">+1000 موقع مدعوم</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Supported Platforms Ticker -->
+  <section class="py-8 border-y border-white/5 bg-white/[0.02]">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-xs uppercase tracking-widest text-gray-400 font-bold mb-4">يدعم التحميل المباشر من مئات المنصات العالمية</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 text-gray-400 font-bold text-sm sm:text-base">
+        <span class="hover:text-amber-400 transition-colors">YouTube</span>
+        <span class="hover:text-amber-400 transition-colors">TikTok</span>
+        <span class="hover:text-amber-400 transition-colors">Instagram</span>
+        <span class="hover:text-amber-400 transition-colors">X (Twitter)</span>
+        <span class="hover:text-amber-400 transition-colors">Facebook</span>
+        <span class="hover:text-amber-400 transition-colors">SoundCloud</span>
+        <span class="hover:text-amber-400 transition-colors">Reddit</span>
+        <span class="hover:text-amber-400 transition-colors">Vimeo</span>
+        <span class="text-amber-400 font-num">+1,000 آخرين</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section id="features" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-amber-400">الميزات الحصرية</h2>
+        <p class="text-3xl sm:text-5xl font-extrabold text-white">كل ما تتمناه في تطبيق تنزيل الوسائط</p>
+        <p class="text-gray-400 text-base sm:text-lg">تم بناء وتطوير MWYD ليتفوق على كافة التطبيقات التقليدية بفضل استقراره الصارم وميزاته المتقدمة.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Feature 1 -->
+        <div class="glass-card p-8 rounded-3xl transition-all hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6 border border-amber-500/20">
+            🎬
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">دقة فائقة تصل إلى 4K و 1080p</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            وداعاً للتنزيل بجودة 360p الإجبارية! التطبيق يقوم بجلب أعلى مسارات الفيديو (VP9/AV1) مع مسار الصوت ودمجها تلقائياً عبر FFmpeg لملف MP4 عالي النقاوة.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="glass-card p-8 rounded-3xl transition-all hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl mb-6 border border-emerald-500/20">
+            🎧
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">استخراج الصوتيات مع الغلاف التلقائي</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            تحويل الفيديوهات إلى صيغ MP3 و Opus و M4A بأعلى معدل بت، مع إضافة غلاف الألبوم وبيانات الفنان والبيانات الوصفية تلقائياً داخل الملف الصوتي.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="glass-card p-8 rounded-3xl transition-all hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-6 border border-cyan-500/20">
+            🔄
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">الاستئناف الذكي والصمود الشبكي</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            نظام متقدم لإعادة المحاولة عند انقطاع الإنترنت، مع الحفاظ الدائم على الملفات الجزئية وتجديد روابط البث المباشر لتفادي أخطاء 403.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="glass-card p-8 rounded-3xl transition-all hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-2xl mb-6 border border-purple-500/20">
+            ✂️
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">قص الفيديوهات قبل التحميل</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            لا تستهلك باقة الإنترنت لتحميل فيديو كامل مدته ساعة من أجل دقيقة واحدة! حدد زمن البداية والنهاية وسيقوم MWYD بتحميل الجزء المطلوب فقط.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="glass-card p-8 rounded-3xl transition-all hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-2xl mb-6 border border-rose-500/20">
+            🌐
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">ترجمة مدمجة ودبلجة صوتية</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            تضمين ملفات الترجمة (Subtitles) مباشرة بالفيديو باللغة العربية أو أي لغة أخرى، مع إمكانية اختيار المسار الصوتي عند توفر مسارات دبلجة متعددة.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="glass-card p-8 rounded-3xl transition-all hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-2xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-2xl mb-6 border border-yellow-500/20">
+            ⚡
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">المشاركة السريعة دون فتح التطبيق</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            اضغط زر "مشاركة" من أي تطبيق (يوتيوب أو تيك توك) واختر MWYD لتظهر لك نافذة سفلية أنيقة تتيح لك التحميل فوراً بنقرة واحدة.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots Gallery -->
+  <section id="screenshots" class="py-24 bg-white/[0.01] border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-amber-400">معرض الشاشات</h2>
+        <p class="text-3xl sm:text-5xl font-extrabold text-white">تصميم فاخر وعصري بواجهة Material 3</p>
+        <p class="text-gray-400 text-base">واجهة بديهية ومريحة للعين، متوافقة بالكامل مع اللغة العربية واتجاه اليمين إلى اليسار (RTL).</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-center max-w-5xl mx-auto">
+        
+        <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl hover:scale-105 transition-transform">
+          <img src="assets/screen1.png" alt="شاشة التطبيق الرئيسية" class="w-full object-cover">
+          <div class="p-4 bg-gray-900 text-center text-sm font-bold text-gray-300">الواجهة الرئيسية والبحث السريع</div>
+        </div>
+
+        <div class="rounded-3xl overflow-hidden border border-amber-500/30 shadow-2xl shadow-amber-500/10 hover:scale-105 transition-transform">
+          <img src="assets/screen2.png" alt="خيارات التنزيل الفورية" class="w-full object-cover">
+          <div class="p-4 bg-gray-900 text-center text-sm font-bold text-amber-400">لوحة التحكم وخيارات الجودة</div>
+        </div>
+
+        <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl hover:scale-105 transition-transform">
+          <img src="assets/screen3.png" alt="إدارة التنزيلات والاستئناف" class="w-full object-cover">
+          <div class="p-4 bg-gray-900 text-center text-sm font-bold text-gray-300">إدارة قوائم التحميل والاستئناف</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-amber-400">خطوات التثبيت والبدء</h2>
+        <p class="text-3xl sm:text-5xl font-extrabold text-white">ثلاث خطوات بسيطة فقط</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="glass-card p-8 rounded-3xl text-center space-y-4">
+          <div class="w-12 h-12 rounded-full bg-amber-500 text-black font-black text-xl flex items-center justify-center mx-auto font-num">1</div>
+          <h3 class="text-lg font-bold text-white">حمّل ملف الـ APK</h3>
+          <p class="text-gray-400 text-sm">اضغط على زر التحميل المباشر للحصول على حزمة التطبيق الرسمية بحجم 44.8 ميجابايت.</p>
+        </div>
+
+        <div class="glass-card p-8 rounded-3xl text-center space-y-4">
+          <div class="w-12 h-12 rounded-full bg-amber-500 text-black font-black text-xl flex items-center justify-center mx-auto font-num">2</div>
+          <h3 class="text-lg font-bold text-white">السماح بالتثبيت</h3>
+          <p class="text-gray-400 text-sm">عند فتح الملف لأول مرة، وافق على "التثبيت من هذا المصدر" في إعدادات الأمان بهاتفك.</p>
+        </div>
+
+        <div class="glass-card p-8 rounded-3xl text-center space-y-4">
+          <div class="w-12 h-12 rounded-full bg-amber-500 text-black font-black text-xl flex items-center justify-center mx-auto font-num">3</div>
+          <h3 class="text-lg font-bold text-white">استمتع بالتحميل</h3>
+          <p class="text-gray-400 text-sm">شارك أي فيديو من يوتيوب أو تيك توك للتطبيق، أو الصق الرابط بداخله وابدأ التحميل مباشرة!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-24 bg-white/[0.01] border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center space-y-4">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-amber-400">الأسئلة الأكثر شيوعاً</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-white">هل لديك أي استفسار؟</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="glass-card p-6 rounded-2xl">
+          <h3 class="text-lg font-bold text-white mb-2">هل التطبيق آمن ومجاني حقاً؟</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            نعم 100%! تطبيق MWYD مجاني ومفتوح المصدر بالكامل بموجب رخصة GPL-3.0، ولا يحتوي على أي إعلانات، برمجيات تتبع، أو طلب أذونات غير ضرورية.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl">
+          <h3 class="text-lg font-bold text-white mb-2">لماذا لا يوجد التطبيق على متجر Google Play؟</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            تمنع سياسات متجر Google Play تطبيقات تحميل الفيديوهات من منصة YouTube. لذلك يتم توفير التطبيق مباشرة كحزمة APK آمنة وموقعة.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl">
+          <h3 class="text-lg font-bold text-white mb-2">كيف يعمل استئناف التنزيل الذكي؟</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            يحفظ MWYD الأجزاء المحملة في الذاكرة دون حذفها حتى في حال انقطاع الشبكة فجأة، ويقوم بتجديد روابط البث المباشرة تلقائياً عند عودة النت لمتابعة التنزيل بسلاسة.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Banner -->
+  <section class="py-20 relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="glass-card p-12 sm:p-16 rounded-[40px] border border-amber-500/30 relative overflow-hidden">
+        <div class="absolute inset-0 glow-gold opacity-50 pointer-events-none"></div>
+        <div class="relative space-y-6 max-w-2xl mx-auto">
+          <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+            جاهز لتجربة أسرع وأقوى تطبيق تنزيل؟
+          </h2>
+          <p class="text-gray-300 text-base sm:text-lg">
+            حمّل MWYD الآن مجاناً واستمتع بتحميل مقاطعك المفضلة بأعلى دقة ممكنة دون أي قيود.
+          </p>
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="https://github.com/monestw-cell/mwyd-media-downloader/releases/download/v1.0.0/mwyd-media-downloader-v1.0.0.apk" 
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 text-black font-extrabold text-base transition-all btn-gold-glow">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span>تحميل التطبيق الآن (APK)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-white/5 text-center text-xs text-gray-400 space-y-4">
+    <div class="flex items-center justify-center gap-3">
+      <img src="assets/icon.png" alt="MWYD Logo" class="w-7 h-7 rounded-lg">
+      <span class="font-bold text-white font-num text-sm">MWYD Media Downloader</span>
+    </div>
+    <p>مشروع مفتوح المصدر مرخص بموجب GPL-3.0 • تم النشر باستضافة سحابية فائقة السرعة عبر Cloudflare</p>
+    <p class="font-num text-gray-400">© 2026 MWYD. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
